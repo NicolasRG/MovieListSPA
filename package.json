@@ -1,0 +1,26 @@
+{
+  "name": "movielistspa",
+  "version": "0.0.1",
+  "description": "List of movies",
+  "main": "/express/server.js",
+  "scripts": {
+    "servert": "mocha test/servertest.js",
+    "serverd": "nodemon express/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolasRG/MovieListSPA.git"
+  },
+  "author": "Nicolas Ramos Gomez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicolasRG/MovieListSPA/issues"
+  },
+  "homepage": "https://github.com/NicolasRG/MovieListSPA#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "express": "^4.17.1",
+    "mocha": "^6.2.0",
+    "request": "^2.88.0"
+  }
+}
