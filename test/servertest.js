@@ -26,20 +26,83 @@ describe("Hello World Get", function() {
 */
 
 describe("Connect to MongoDB", function(){
-
+    this.enableTimeouts(true);
     const route = '/mongoDBtest';
     status200(route);
 
     it("connects to mongo", function(){
         
-        request(url+route, function(error, response,body){
+        request(url+route, function(error, response, body){
 
             expect(body).to.equal("true");
         
         });
     });
 
+    it("Retrieves information from get route", function(){
+
+        request(url+"/getListofAllMovies" , function(err, response, body){
+            const list = JSON.parse(body);
+            expect(list).to.be.instanceOf(Object);
+
+        });
+    });
+
+    it("Posts information in the data base", function(done){
+
+        const options = {uri: url+'/postMovie',
+                         body : {
+                                name : "Anime part 2"
+                                },
+                         json : true,
+                        };
+
+        request.post(options, function(err, repsonse,  body){
+            
+            expect(body+"").to.be.equal("true");
+            done();
+        
+        });
+    }).timeout(500);
+
+    
+
+    it("Updates information in the database", function(done){
+
+        const options ={
+            uri : url + '/putsMovie',
+            body : {
+                oldName : "Anime part 2",
+                newName : "Anime part 3"
+            },
+            json : true,
+        }
+
+        request.put(options, function(err, repsonse, body){
+        
+            expect(body+"").to.equal("true");
+            done();
+        });
+    
+    }).timeout(500);
+
+    it("Deletes inforamtion in the data base", function(done){
+        const options = { uri : url+'/deleteMovie',
+                         body : {
+                                    name : "Anime part 3"
+                                },
+                        json : true,
+                        };
+
+        request.delete(options, function(errm, repsonse, body){
+            expect(body+"").to.equal("true");
+            done();
+        
+        });
+    }).timeout(500);
 });
+
+
 
 /*
     Checks to make sure status is 200

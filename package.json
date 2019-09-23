@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/NicolasRG/MovieListSPA#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "chai": "^4.2.0",
+    "create-react-app": "^3.1.2",
     "express": "^4.17.1",
     "mocha": "^6.2.0",
     "mongoose": "^5.7.1",

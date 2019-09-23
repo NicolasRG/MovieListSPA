@@ -1,7 +1,17 @@
 // module imports 
 const express = require("express");
 const mongoose  = require("mongoose");
+const bodyParser = require('body-parser');
 
+//route imports 
+const mongoDBtest = require("./routes/mongoDBtest.js");
+const getListofAllMovies = require('./routes/getListofAllMovies.js');
+const postMovie = require('./routes/postMovie.js');
+const putsMovie =  require('./routes/putsMovie.js');
+const deleteMovie = require('./routes/deleteMovie.js');
+
+//schema imports
+const Movie = require("./schemas/Movie.js");
 
 
 //global server constants
@@ -9,13 +19,14 @@ const mongoose  = require("mongoose");
 const app = express();
 const PORT = 80;
 
-mongoose.connect('mongodb://node:92219@nicoprojects.com/test', {useNewUrlParser: true});
+//connect to mongoose
+mongoose.connect('mongodb://node:92219@nicoprojects.com/test', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
-const movie = db.movie;
 
 db.on('error', function(){
-    console.log("wers")
+    console.log("Error")
 });
+
 db.once('open', function() {
   // we're connected!
   console.log("Mongod Connected");
@@ -27,19 +38,23 @@ app.use(function(req, res, next){
     next();
 });
 
+//middleware
+app.use(bodyParser.urlencoded());
+
+app.use(bodyParser.json());
+
 //routes
+app.use('/mongoDBtest', mongoDBtest);
+app.use('/getListofAllMovies', getListofAllMovies);
+app.use('/postMovie', postMovie);
+app.use('/putsMovie', putsMovie);
+app.use('/deleteMovie', deleteMovie);
+
+
 app.get('/', function(req,res){
     res.send("Hello World");
 });
 
-app.get('/mongoDBtest', function(req, res){
-    try{
-        console.log(db);
-    }catch(e){
-        console.log(e, "we died");
-    }
-    res.send(true+"");
-});
 
 //start server
 app.listen(PORT);
