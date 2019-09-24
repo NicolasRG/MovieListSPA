@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+.List-Container {
+  height: 40vmin;
+}
+
+.App-Container {
+  background-color: #09d3ac;
+  min-height: 66.6vh;
+  max-height: 66.6vh;
+  max-width: 66.6vw;
+  min-width: 66.6vw;
+  color: white;
+  border: white 1px solid;
+}

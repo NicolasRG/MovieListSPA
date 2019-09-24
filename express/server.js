@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose  = require("mongoose");
 const bodyParser = require('body-parser');
+const cors = require("cors");
 
 //route imports 
 const mongoDBtest = require("./routes/mongoDBtest.js");
@@ -39,9 +40,10 @@ app.use(function(req, res, next){
 });
 
 //middleware
+app.use(cors());
 app.use(bodyParser.urlencoded());
-
 app.use(bodyParser.json());
+
 
 //routes
 app.use('/mongoDBtest', mongoDBtest);
