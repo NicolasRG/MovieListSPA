@@ -1,3 +1,4 @@
 .ListController{
-    color: #3c5f58;
+    position: relative;
+    flex-grow: 1;
 }

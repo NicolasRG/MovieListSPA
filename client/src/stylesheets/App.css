@@ -2,9 +2,6 @@
   text-align: center;
 }
 
-.List-Container {
-  height: 40vmin;
-}
 
 .App-Container {
   background-color: #09d3ac;
@@ -12,6 +9,8 @@
   max-height: 66.6vh;
   max-width: 66.6vw;
   min-width: 66.6vw;
+  display: flex;
+  flex-flow: column;
   color: white;
   border: white 1px solid;
 }

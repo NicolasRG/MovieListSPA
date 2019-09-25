@@ -1,19 +1,23 @@
 import React from 'react';
 import Axios from 'axios';
 import '../stylesheets/listController.css';
-const backend = "http://localhost";
+import MovieCard from './MovieCard.js';
+import AddMovieButton from './AddMovieButton.js';
+import Modal from  'react-modal';
+
+
+const backend = "http://nicoprojects.com";
 
 
 class ListController extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = {movies: ""}
-    
-    }
+        this.state = {movies: [], //list of movies in the list
+                      insertModal : false, //modal controller
+                    }
 
-    componentDidMount(){
-        const options = {
+        this.getOptions = {//options for get operation
             method: 'get',
             url: backend+"/getListofAllMovies",
             headers: {
@@ -21,26 +25,59 @@ class ListController extends React.Component{
                 'Content-Type': 'application/json;charset=UTF-8'
             },
         };
-        async function test(){
-            let response = await Axios(options);
-            let responseOK = response && response.status === 200 && response.statusText === 'OK';
-            if (responseOK) {
-                let data = await response.data;
-                // do something with data
-                this.setState({
-                    movies : data
-                });
-            }
-        }
-        test();
+
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    
+    }
+
+    componentDidMount(){
+        //hmm ??
+        Modal.setAppElement('body');
+        //Reques to get list of Movies
+        Axios(this.getOptions).then(res =>{ 
+            const data = res.data;
+            console.log(data);
+            this.setState({movies : data});
+        });
 
     }
 
+    openModal() {
+        this.setState({insertModal : true});
+      }
+    
+    closeModal() {
+        this.setState({ insertModal: false});
+      }
+
+
 
     render(){
+        const items = this.state.movies.map((d , i)=>{
+            return <MovieCard name = {d.name} key = {"MovieCard"+i}/>
+        });
+
         return ( <div className = "ListController">
-            {this.state.movies}
-        </div>);
+                    <Modal
+                        isOpen={this.state.insertModal}
+                        contentLabel="onRequestClose Example"
+                        onRequestClose={this.closeModal}
+                        shouldCloseOnOverlayClick={true}
+                    >
+                        <button
+                            onClick = {this.closeModal}
+                            > 
+                            Close modal
+                        </button>
+                    </Modal>
+
+                    <div>
+                        {items}
+                    </div>   
+                    
+                    <AddMovieButton onClick = {(e)=> this.openModal}/>
+                </div>);
     }
 }
 

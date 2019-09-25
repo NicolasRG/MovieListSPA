@@ -9,11 +9,7 @@ function App() {
     <div className="App">
       <header className="App-Container">
           <Title />
-        <div
-          className="List-Container"
-        >
           <ListController />
-        </div>
       </header>
     </div>
   );
