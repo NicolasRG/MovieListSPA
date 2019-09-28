@@ -6,7 +6,7 @@ import AddMovieButton from './AddMovieButton.js';
 import Modal from  'react-modal';
 
 
-const backend = "http://nicoprojects.com";
+const backend = "http://localhost.com";//Need to find a home for this app :(
 
 
 class ListController extends React.Component{
