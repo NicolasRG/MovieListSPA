@@ -21,7 +21,7 @@ const app = express();
 const PORT = 80;
 
 //connect to mongoose
-mongoose.connect('mongodb://node:92219@nicoprojects.com/test', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://node:92219@localhost.com/test', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 
 db.on('error', function(){
