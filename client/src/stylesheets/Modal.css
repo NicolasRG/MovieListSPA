@@ -1,0 +1,27 @@
+.modal-overlay{
+    position: absolute;
+    z-index: 20;
+    min-width: 100vw;
+    min-height: 100vh;
+    top: 0px;
+    left: 0px;
+}
+
+.modal-content{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        
+}
+

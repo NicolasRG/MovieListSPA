@@ -20,7 +20,7 @@ router.put('/', function(req, res){
     .then(function(doc){
         
         console.log(doc, "update");
-        res.send(true);
+        res.send(doc);
     
     }).catch(e =>{
        

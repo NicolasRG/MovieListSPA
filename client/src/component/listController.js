@@ -1,12 +1,17 @@
 import React from 'react';
-import Axios from 'axios';
-import '../stylesheets/listController.css';
-import MovieCard from './MovieCard.js';
-import AddMovieButton from './AddMovieButton.js';
 import Modal from  'react-modal';
 
+import '../stylesheets/listController.css';
+import '../stylesheets/Modal.css';
 
-const backend = "http://localhost";//Need to find a home for this app :(
+import MovieCard from './MovieCard.js';
+import AddMovieButton from './AddMovieButton.js';
+import MovieInput from './MovieInput.js';
+
+import getMovies from '../apiRequests/getMovies.js';
+
+
+const backend = "http://192.168.1.4";//Need to find a home for this app :(
 
 
 class ListController extends React.Component{
@@ -32,14 +37,10 @@ class ListController extends React.Component{
     }
 
     componentDidMount(){
-        //hmm ??
+        //React code to for it to get made i think ??
         Modal.setAppElement('body');
         //Reques to get list of Movies
-        Axios(this.getOptions).then(res =>{ 
-            const data = res.data;
-            console.log(data);
-            this.setState({movies : data});
-        });
+        getMovies("name", this, backend );
 
     }
 
@@ -50,6 +51,8 @@ class ListController extends React.Component{
     closeModal() {
         this.setState({ insertModal: false});
       }
+
+    
 
 
 
@@ -64,12 +67,11 @@ class ListController extends React.Component{
                         contentLabel="onRequestClose Example"
                         onRequestClose={this.closeModal}
                         shouldCloseOnOverlayClick={true}
+                        overlayClassName = {"modal-overlay"}
+                        className = {"modal-content"}
                     >
-                        <button
-                            onClick = {this.closeModal}
-                            > 
-                            Close modal
-                        </button>
+                        <MovieInput onClose ={this.close}/>
+                        
                     </Modal>
 
                     <div>

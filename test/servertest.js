@@ -52,21 +52,23 @@ describe("Connect to MongoDB", function(){
 
         const options = {uri: url+'/postMovie',
                          body : {
-                                name : "Anime part 2"
+                                name : "Anime part 2",
+                                url : "asdf.com",
+                                creator : "tim",
                                 },
                          json : true,
                         };
 
         request.post(options, function(err, repsonse,  body){
-            
-            expect(body+"").to.be.equal("true");
+            console.log(typeof body);
+            expect(body).match(/^[a-fA-F0-9]+$/);//mathces hex ids
             done();
         
         });
     }).timeout(500);
 
     
-
+    //updates these test when done with base concept
     it("Updates information in the database", function(done){
 
         const options ={
@@ -80,7 +82,7 @@ describe("Connect to MongoDB", function(){
 
         request.put(options, function(err, repsonse, body){
         
-            expect(body+"").to.equal("true");
+            expect(body.name).to.equal(options.body.newName);
             done();
         });
     
