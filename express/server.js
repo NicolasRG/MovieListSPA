@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose  = require("mongoose");
 const bodyParser = require('body-parser');
+const path = require('path');
 const cors = require("cors");
 
 //route imports 
@@ -52,10 +53,11 @@ app.use('/getListofAllMovies', getListofAllMovies);
 app.use('/postMovie', postMovie);
 app.use('/putsMovie', putsMovie);
 app.use('/deleteMovie', deleteMovie);
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 
-app.get('/', function(req,res){
-    res.send("Hello World");
+app.get('*', function(req,res){
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 
