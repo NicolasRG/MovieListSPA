@@ -1,0 +1,11 @@
+.closeButton{
+    width :50px;
+    height: 50px;
+    max-width: 50px;
+    border : none;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.closeButton:hover{
+    color: red;
+}

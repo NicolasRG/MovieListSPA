@@ -8,8 +8,9 @@ import MovieCard from './MovieCard.js';
 import AddMovieButton from './AddMovieButton.js';
 import MovieInput from './MovieInput.js';
 
+//requests
 import getMovies from '../apiRequests/getMovies.js';
-
+import postMovie from '../apiRequests/postMovie.js';
 
 const backend = "http://192.168.1.4";//Need to find a home for this app :(
 
@@ -22,18 +23,12 @@ class ListController extends React.Component{
                       insertModal : false, //modal controller
                     }
 
-        this.getOptions = {//options for get operation
-            method: 'get',
-            url: backend+"/getListofAllMovies",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json;charset=UTF-8'
-            },
-        };
-
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
-    
+        this.onSubmitMovie = this.onSubmitMovie.bind(this);
+        this.onTempAdd = this.onTempAdd.bind(this);
+        this.onSuccesfullAdd = this.onSuccesfullAdd.bind(this);
+        
     }
 
     componentDidMount(){
@@ -52,13 +47,27 @@ class ListController extends React.Component{
         this.setState({ insertModal: false});
       }
 
-    
+    onSubmitMovie(movie){
+        postMovie( movie , this, backend);
+        this.closeModal();
+    }
+
+    onTempAdd(movie){
+        movie.temp = true;
+        let  movies = this.state.movies.slice();
+        movies.push(movie)
+        this.setState({movies : movies});
+    }
+
+    onSuccesfullAdd(){
+        getMovies("name", this, backend );
+    }
 
 
 
     render(){
         const items = this.state.movies.map((d , i)=>{
-            return <MovieCard name = {d.name} key = {"MovieCard"+i}/>
+            return <MovieCard name = {d.name} key = {"MovieCard"+i} temp= {d.temp}/>
         });
 
         return ( <div className = "ListController">
@@ -70,7 +79,10 @@ class ListController extends React.Component{
                         overlayClassName = {"modal-overlay"}
                         className = {"modal-content"}
                     >
-                        <MovieInput onClose ={this.close}/>
+                        <MovieInput closeModal ={this.closeModal}
+                        onSubmitMovie = {this.onSubmitMovie}
+                        onTempAdd = {this.onTempAdd}
+                        />
                         
                     </Modal>
 

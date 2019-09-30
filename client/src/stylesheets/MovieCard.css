@@ -1,4 +1,10 @@
 .MovieCard{
-    background-color: green;
+    background-color: #01612cbe;
     position: relative;
+    border-bottom: 1px  #09d3ac solid;
+}
+
+.MovieCardTemp{
+    background-color: rgba(0, 0, 0, 0.068);
+    position: relative;    
 }
