@@ -4,6 +4,7 @@
   "description": "List of movies",
   "main": "/express/server.js",
   "scripts": {
+    "start" : "node ./express/server.js",
     "servert": "mocha test/servertest.js",
     "serverd": "nodemon express/server.js"
   },

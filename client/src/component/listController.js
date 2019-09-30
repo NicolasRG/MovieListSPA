@@ -12,7 +12,7 @@ import MovieInput from './MovieInput.js';
 import getMovies from '../apiRequests/getMovies.js';
 import postMovie from '../apiRequests/postMovie.js';
 
-const backend = "http://192.168.1.4";//Need to find a home for this app :(
+const backend = "https://moielist.appspot.com/";//Need to find a home for this app :(
 
 
 class ListController extends React.Component{
@@ -67,7 +67,11 @@ class ListController extends React.Component{
 
     render(){
         const items = this.state.movies.map((d , i)=>{
-            return <MovieCard name = {d.name} key = {"MovieCard"+i} temp= {d.temp}/>
+            return <MovieCard name = {d.name} 
+                    url = {d.url}
+                    _id = {d._id}
+                    creator = {d.creator}
+                    key = {"MovieCard"+i} temp= {d.temp}/>
         });
 
         return ( <div className = "ListController">

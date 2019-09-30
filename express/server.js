@@ -19,7 +19,7 @@ const Movie = require("./schemas/Movie.js");
 //global server constants
 
 const app = express();
-const PORT = 80;
+const PORT = process.env.PORT || 8080;
 
 //connect to mongoose
 mongoose.connect('mongodb+srv://node:9302019@moviecluster1-duno3.gcp.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
