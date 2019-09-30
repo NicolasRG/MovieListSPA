@@ -65,7 +65,7 @@ describe("Connect to MongoDB", function(){
             done();
         
         });
-    }).timeout(500);
+    }).timeout(5000);
 
     
     //updates these test when done with base concept
@@ -86,7 +86,7 @@ describe("Connect to MongoDB", function(){
             done();
         });
     
-    }).timeout(500);
+    }).timeout(5000);
 
     it("Deletes inforamtion in the data base", function(done){
         const options = { uri : url+'/deleteMovie',
@@ -101,7 +101,7 @@ describe("Connect to MongoDB", function(){
             done();
         
         });
-    }).timeout(500);
+    }).timeout(5000);
 });
 
 
