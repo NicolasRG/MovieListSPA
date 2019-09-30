@@ -82,8 +82,8 @@ class MovieInput extends React.Component{
                       
 
                         
-
-                        <button onClick ={this.submitMovie} class="btn btn-primary">
+        {/*Update this to look better later */}
+                        <button onClick ={this.submitMovie} class="btn btn-primary"> 
                                 Submit
                         </button>
                 </form>

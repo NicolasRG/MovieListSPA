@@ -4,7 +4,27 @@
     border-bottom: 1px  #09d3ac solid;
 }
 
-.MovieCardTemp{
+.MovieCard Temp{
     background-color: rgba(0, 0, 0, 0.068);
     position: relative;    
+}
+
+.MovieCardIcon {
+    width: 50px;
+    max-width: 50px;
+    height: 50px;
+    max-height: 50px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.0);
+    cursor: pointer;
+    color: white;
+    user-select: none;
+    }
+    
+.MovieCardIcon:hover {
+    color : #3c5f58;
+}
+
+.emptyCard{
+    max-width: 5vw;
 }

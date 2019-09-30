@@ -2,18 +2,28 @@
     position: absolute;
     right : 15px;
     bottom : 15px;
-    width: 40px;
-    height : 40px;
+    width: 50px;
+    height : 50px;
     border-radius: 10px;
-    background-color:  #3c5f58;;
+    background-color:  #3c5f58;
     color : aliceblue;
     z-index: 10;
     user-select: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .AddMovieButton:hover{
     cursor: pointer;
-    
     background-color: aliceblue;
     color : #3c5f58;
 }
+
+.AddMovieButton .icon{
+    position: relative;
+    top:15px;
+    height: 40px;
+    width: 40px;
+    z-index: 11;
+} 

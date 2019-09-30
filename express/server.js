@@ -21,11 +21,12 @@ const app = express();
 const PORT = 80;
 
 //connect to mongoose
-mongoose.connect('mongodb://node:92219@192.168.1.4/test', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://node:9302019@moviecluster1-duno3.gcp.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 
 db.on('error', function(){
-    console.log("Error")
+    console.log("Error");
+    db.close();
 });
 
 db.once('open', function() {

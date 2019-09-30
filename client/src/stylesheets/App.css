@@ -11,6 +11,6 @@
   min-width: 66.6vw;
   display: flex;
   flex-flow: column;
-  color: white;
+  color: rgb(8, 8, 8);
   border: white 1px solid;
 }
