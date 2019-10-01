@@ -11,6 +11,8 @@ import MovieInput from './MovieInput.js';
 //requests
 import getMovies from '../apiRequests/getMovies.js';
 import postMovie from '../apiRequests/postMovie.js';
+import deleteMovie from '../apiRequests/deleteMovie.js';
+
 
 const backend = "https://moielist.appspot.com/";//Need to find a home for this app :(
 
@@ -28,6 +30,7 @@ class ListController extends React.Component{
         this.onSubmitMovie = this.onSubmitMovie.bind(this);
         this.onTempAdd = this.onTempAdd.bind(this);
         this.onSuccesfullAdd = this.onSuccesfullAdd.bind(this);
+        this.onTempDeleteMovie = this.onTempDeleteMovie.bind(this);
         
     }
 
@@ -59,11 +62,25 @@ class ListController extends React.Component{
         this.setState({movies : movies});
     }
 
+    onTempDeleteMovie(movie){
+        //create window.confirm
+        if(! window.confirm("Confirm that you want to delete :"+ movie.name)){
+            return;
+        }
+        deleteMovie(movie, this, backend);
+        movie.temp = true;
+        const movies = this.state.movies.slice().filter(mov => mov.name !== movie.name);
+        movies.push(movie);
+        this.setState({
+            movies : movies,
+        });
+    }
+
     onSuccesfullAdd(){
         getMovies("name", this, backend );
     }
 
-
+   
 
     render(){
         const items = this.state.movies.map((d , i)=>{
@@ -71,6 +88,7 @@ class ListController extends React.Component{
                     url = {d.url}
                     _id = {d._id}
                     creator = {d.creator}
+                    onDelete = {this.onTempDeleteMovie}
                     key = {"MovieCard"+i} temp= {d.temp}/>
         });
 
@@ -83,6 +101,7 @@ class ListController extends React.Component{
                         overlayClassName = {"modal-overlay"}
                         className = {"modal-content"}
                     >
+                        
                         <MovieInput closeModal ={this.closeModal}
                         onSubmitMovie = {this.onSubmitMovie}
                         onTempAdd = {this.onTempAdd}

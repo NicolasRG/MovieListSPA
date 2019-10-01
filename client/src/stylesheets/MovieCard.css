@@ -1,7 +1,8 @@
 .MovieCard{
-    background-color: #01612cbe;
+    background-color: #01612cbe; 
     position: relative;
     border-bottom: 1px  #09d3ac solid;
+    font-size: .7em;
 }
 
 .MovieCard Temp{
@@ -17,14 +18,46 @@
     border: none;
     background-color: rgba(0, 0, 0, 0.0);
     cursor: pointer;
-    color: white;
+    color: #9cb4a7b4;;
     user-select: none;
-    }
+}
     
 .MovieCardIcon:hover {
-    color : #3c5f58;
+    color : white;
 }
 
-.emptyCard{
-    max-width: 5vw;
+.MovieCardInfo {
+    background-color: #0000002a;
 }
+
+.MovieCardCreator{
+    font-size:  .50em;
+    max-width: 15vw;
+}
+
+.MovieCardURL{
+    font-size: .50em;
+    height: 30px;
+}
+
+.MovieCardDelete{
+    padding: 0px;
+    font-size: 2vh;
+}
+
+.MovieCardDelete div{
+    /*background-color: rgba(0, 0, 0, 0.0);*/
+    position: absolute;
+    color : rgb(196, 68, 68);
+    width : 25px;
+    height: 100%;
+    right : 2vw;
+    display: block;
+    overflow: hidden;
+}
+
+.MovieCardDelete div:hover{
+    color: white;
+    cursor: pointer;
+}
+

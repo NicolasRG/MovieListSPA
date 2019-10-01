@@ -51,6 +51,7 @@ class MovieInput extends React.Component{
         render(){
                 return <div className = "MovieInput">
                 <CloseModalButton closeModal = {this.props.closeModal}/>
+                <br />
                 <form onSubmit = {(e)=>{e.preventDefault();}}>
 
                         <div class="form-group">

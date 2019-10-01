@@ -1,15 +1,16 @@
 import React from 'react';
 import '../stylesheets/CloseModalButton.css'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 function CloseModalButton(props){
 
     return ( <div class="container">
-                <div class="row">
+                <div className ="row">
                     <button onClick = {props.closeModal} className = "closeButton col order-last" >                     
-                        <i class="fa fa-close"> </i>
+                        <FontAwesomeIcon icon={"times"} />
                     </button>
-                    <div className = "col">
-
+                    <div className = "col CloseModalTitle">
+                        Add a Movie 
                     </div>
                 </div> 
             </div> );

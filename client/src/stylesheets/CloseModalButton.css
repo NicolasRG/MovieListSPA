@@ -9,3 +9,7 @@
 .closeButton:hover{
     color: red;
 }
+
+.CloseModalTitle{
+    font-size : 1.6em;
+}
