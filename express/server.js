@@ -12,6 +12,9 @@ const postMovie = require('./routes/postMovie.js');
 const putsMovie =  require('./routes/putsMovie.js');
 const deleteMovie = require('./routes/deleteMovie.js');
 
+//auth/cookie imports
+const testCookieLogger = require('./auth/testCookieLogger.js');
+
 //schema imports
 const Movie = require("./schemas/Movie.js");
 
@@ -19,7 +22,7 @@ const Movie = require("./schemas/Movie.js");
 //global server constants
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 80;
 
 //connect to mongoose
 mongoose.connect('mongodb+srv://node:9302019@moviecluster1-duno3.gcp.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
@@ -35,16 +38,24 @@ db.once('open', function() {
   console.log("Mongod Connected");
 });
 
+
+
 //logging
 app.use(function(req, res, next){
     console.log(req.ip , req.path);
     next();
 });
 
+
+
 //middleware
 app.use(cors());
+app.use(testCookieLogger);
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+
+//simple auth checks(i think)
+//app.use(testCookieLogger);
 
 
 //routes
@@ -56,9 +67,10 @@ app.use('/deleteMovie', deleteMovie);
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 
-app.get('*', function(req,res){
+app.get('/*', function(req,res){
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
+
 
 
 //start server

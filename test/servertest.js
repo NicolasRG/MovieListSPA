@@ -1,8 +1,9 @@
 const expect = require('chai').expect;
 const request = require("request");
-
+const Cookies = require('cookies');
 
 const url = "http://localhost";
+const cj = request.jar();
 
 /*
     Makes sure the server works in general
@@ -22,13 +23,45 @@ describe("Hello World Get", function() {
 });
 
 /*
+    Test Cookie Parsing
+*/
+
+describe("Cookie logging", function(){
+    const route = "/cookie";
+    const name = "James";
+    it("Logs the cookies and name", function(done){
+
+        cookies.set('name', name, {signed : true});
+        
+        cj.setCookie(cookies, "http://testScript", [], (err, cookie)=>{
+            console.log (err, cookie);
+        });//, [{ignoreError : true}]);
+
+        const options = {uri: url+route,
+                         json : true,
+                         jar : true,
+                          jar : cj
+                        }
+
+        request.get(options, function(err, repsonse,  body){
+            console.log(typeof body);
+            expect(body).to.equal(name);
+            done();
+        
+        });
+    }).timeout(5000);
+    
+
+});
+
+
+/*
     Test connection to MongoDB
 */
 
 describe("Connect to MongoDB", function(){
     this.enableTimeouts(true);
     const route = '/mongoDBtest';
-    status200(route);
 
     it("connects to mongo", function(){
         

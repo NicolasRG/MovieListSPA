@@ -4,7 +4,7 @@
   "description": "List of movies",
   "main": "/express/server.js",
   "scripts": {
-    "start" : "node ./express/server.js",
+    "start": "node ./express/server.js",
     "servert": "mocha test/servertest.js",
     "serverd": "nodemon express/server.js"
   },
@@ -21,11 +21,13 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
+    "cookies": "^0.7.3",
     "cors": "^2.8.5",
     "create-react-app": "^3.1.2",
     "express": "^4.17.1",
     "mocha": "^6.2.0",
     "mongoose": "^5.7.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "universal-cookie-express": "^4.0.1"
   }
 }
