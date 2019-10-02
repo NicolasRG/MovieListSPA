@@ -1,5 +1,5 @@
 import Axios from "axios"
-
+Axios.defaults.withCredentials = true;
 const postMovie = ( movie, context, backend) => {
 
     const postOptions = {//options for get operation

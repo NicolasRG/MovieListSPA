@@ -1,5 +1,5 @@
 import Axios from "axios"
-
+Axios.defaults.withCredentials = true;
 const getMovies = (name, context, backend) => {
 
     const getOptions = {//options for get operation
@@ -9,6 +9,7 @@ const getMovies = (name, context, backend) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json;charset=UTF-8'
         },
+
     };
 
 

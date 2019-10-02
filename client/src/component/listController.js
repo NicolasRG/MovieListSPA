@@ -15,7 +15,7 @@ import deleteMovie from '../apiRequests/deleteMovie.js';
 
 
 const backend = "https://moielist.appspot.com/";//Need to find a home for this app :(
-
+//const backend = "http://localhost"
 
 class ListController extends React.Component{
     constructor(props){

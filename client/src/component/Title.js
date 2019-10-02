@@ -1,17 +1,17 @@
 import React from "react";
 import '../stylesheets/Title.css';
-import { useCookies } from 'react-cookie';
+import Cookies from 'universal-cookie';
 
 function Title(){
-    const [cookies, setCookie] = useCookies(['name']);
-    
     
  
     function onChange(e) {
-        alert("asdf")
         const name = document.getElementById("id");
-        console.log(name.value);
-        setCookie('name', name.value, { path: '/' })
+        alert("SET name to "+name.value);
+        const cookies = new Cookies();
+
+        cookies.set('name', name.value, { path: '/', sameSite : true});
+        console.log(cookies.get('name'));
         //update cookie in the server aswell
         
     }

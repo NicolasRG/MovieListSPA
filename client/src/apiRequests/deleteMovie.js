@@ -1,5 +1,5 @@
 import Axios from 'axios';
-
+Axios.defaults.withCredentials = true;
 const deleteMovie  = (movie, context, backend) =>{
     const deleteOptions = {
         method: 'delete',
