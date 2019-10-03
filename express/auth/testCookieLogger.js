@@ -6,12 +6,12 @@ const testCookieLogger = async function(req, res, next) {
     let cookies = new Cookies(req, res, {keys: keys});
 
     //get name
-    const name = cookies.get('name', {signed : true});
+    const name = cookies.get('name', {signed : true} );
 
     //set the cookie to a value
     
     if(!name){
-        cookies.set('name', "Jimmy boberts", {signed :true});
+        cookies.set('name', "Jimmy boberts",{signed : true, httpOnly : false,});
         console.log("Youre new: " + new Date().toISOString());
     
     }else{

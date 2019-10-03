@@ -1,17 +1,67 @@
-import { google } from 'googleapis';
+const express = require('express');
+const got = require('got');
+const jwt = require('jsonwebtoken');
 
-const googleConfig = {
-  clientId: '<GOOGLE_CLIENT_ID>', // e.g. asdfghjkljhgfdsghjk.apps.googleusercontent.com
-  clientSecret: 'AIzaSyAbNUvRPLo3ZcOiD0NZIOt3jECSSLGaUzo', // e.g. _ASDFA%DFASDFASDFASD#FAD-
-  redirect: 'https://your-website.com/google-auth' // this must match your google api settings
-};
+let certs;
+let aud;
 
-/**
- * Create the google auth object which gives us access to talk to google's apis.
- */
-function createConnection() {
-  return new google.auth.OAuth2(
-    googleConfig.clientId,
-    googleConfig.clientSecret,
-    googleConfig.redirect
-};
+async function certificates(){
+    if(!certs){
+      
+      let response = await got('https://www.gstatic.com/iap/verify/public_key');
+      certs = JSON.parse(response.body);
+    }
+
+    return certs;
+}
+
+async function getMetadata(itemName) {
+  const endpoint = 'http://metadata.google.internal';
+  const path = '/computeMetadata/v1/project/';
+  const url = endpoint + path + itemName;
+
+  let response = await got(url, {
+    headers: {'Metadata-Flavor': 'Google'},
+  });
+  return response.body;
+}
+
+async function audience() {
+  if (!aud) {
+    let project_number = await getMetadata('numeric-project-id');
+    let project_id = await getMetadata('project-id');
+
+    aud = '/projects/' + project_number + '/apps/' + project_id;
+  }
+
+  return aud;
+}
+
+async function validateAssertion(assertion) {
+  if (!assertion) {
+    return {};
+  }
+  // Decode the header to determine which certificate signed the assertion
+  const encodedHeader = assertion.split('.')[0];
+  const decodedHeader = Buffer.from(encodedHeader, 'base64').toString('utf8');
+  const header = JSON.parse(decodedHeader);
+  const keyId = header.kid;
+
+  // Fetch the current certificates and verify the signature on the assertion
+  const certs = await certificates();
+  const payload = jwt.verify(assertion, certs[keyId]);
+
+  // Check that the assertion's audience matches ours
+  const aud = await audience();
+  if (payload.aud !== aud) {
+    throw new Error('Audience mismatch. '+payload.aud+' should be '+aud+''.');
+  }
+
+  // Return the two relevant pieces of information
+  return {
+    email: payload.email,
+    sub: payload.sub,
+  };
+}
+
+module.exports =  validateAssertion;
