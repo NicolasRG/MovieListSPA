@@ -12,10 +12,14 @@ body {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  
+  outline : none;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+button{
+  outline: none;
 }

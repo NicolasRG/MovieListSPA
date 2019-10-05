@@ -1,7 +1,12 @@
 const Cookies = require('cookies');
 
 const keys = ["name"];
-
+/**
+ * Testing out how cookes work in node
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 const testCookieLogger = async function(req, res, next) {
     let cookies = new Cookies(req, res, {keys: keys});
 

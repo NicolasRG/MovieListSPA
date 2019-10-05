@@ -1,8 +1,10 @@
 import React from 'react';
 import '../stylesheets/CloseModalButton.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-
-function CloseModalButton(props){
+/**
+ * Renders the title of the modal and a close button for it
+ */
+function ModalHeader(props){
 
     return ( <div class="container">
                 <div className ="row">
@@ -16,4 +18,4 @@ function CloseModalButton(props){
             </div> );
 }
 
-export default CloseModalButton 
+export default ModalHeader

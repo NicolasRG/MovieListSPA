@@ -1,5 +1,12 @@
 import Axios from 'axios';
 Axios.defaults.withCredentials = true;
+
+/**
+ * Create DELETE request to delete movie from list
+ * @param {String} movie 
+ * @param {React.Component} context 
+ * @param {String} backend 
+ */
 const deleteMovie  = (movie, context, backend) =>{
     const deleteOptions = {
         method: 'delete',
@@ -20,7 +27,7 @@ const deleteMovie  = (movie, context, backend) =>{
         console.error(e);
         alert("Error Issued: May have not been deleted");  
     }).finally(()=>{
-        context.onSuccesfullAdd(); //not intened for this case but works here too
+        //context.onSuccesfullEdit(); 
     });
 
 }

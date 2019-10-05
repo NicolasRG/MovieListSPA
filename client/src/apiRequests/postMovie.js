@@ -1,5 +1,11 @@
 import Axios from "axios"
 Axios.defaults.withCredentials = true;
+/**
+ * Creates a POST request to add new moive to the list
+ * @param {String} movie 
+ * @param {React.Component} context 
+ * @param {String} backend 
+ */
 const postMovie = ( movie, context, backend) => {
 
     const postOptions = {//options for get operation
@@ -10,7 +16,7 @@ const postMovie = ( movie, context, backend) => {
             'Content-Type': 'application/json;charset=UTF-8'
         },
         data :{
-            name : movie.name,//{"asdf": ("ASDF")},
+            name : movie.name,
             url : movie.url,
             creator : movie.creator,
         },
@@ -20,9 +26,7 @@ const postMovie = ( movie, context, backend) => {
     Axios(postOptions).then(res =>{ 
         const data = res.data;
         if(data.errors){ throw Error}//error checks
-
-        context.onSuccesfullAdd();
-        
+        //context.onSuccesfullEdit();
 
     }).catch(e =>{
         console.error(e)  

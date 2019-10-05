@@ -2,8 +2,10 @@ import React from "react";
 import "../stylesheets/AddMovieButton.css";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
+/**
+ * Small button to trigger modal
+ */
 class AddMovieButton extends React.Component{
-
 
     render(){
         return <div className = "AddMovieButton" onClick = {this.props.onClick()}>

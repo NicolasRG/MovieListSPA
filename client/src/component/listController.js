@@ -12,34 +12,49 @@ import MovieInput from './MovieInput.js';
 import getMovies from '../apiRequests/getMovies.js';
 import postMovie from '../apiRequests/postMovie.js';
 import deleteMovie from '../apiRequests/deleteMovie.js';
+//SSE Request
+//import setupSSeGet from  '../apiRequests/sses.js'; Google App Engine doesnt support Keep - alive headers :////////////////////////////
 
 
-const backend = "https://moielist.appspot.com/";//Need to find a home for this app :(
+const backend = "https://moielist.appspot.com/";//Prodcution server
 //const backend = "http://localhost"
 
+
+/**
+ * Control crud operations and connects them to UI
+ */
 class ListController extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {movies: [], //list of movies in the list
                       insertModal : false, //modal controller
+                      creator : ""
                     }
-
+        
+        this.getInterval = null;  //interval to update movie list          
+    
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.onSubmitMovie = this.onSubmitMovie.bind(this);
         this.onTempAdd = this.onTempAdd.bind(this);
-        this.onSuccesfullAdd = this.onSuccesfullAdd.bind(this);
+        this.onSuccesfullEdit = this.onSuccesfullEdit.bind(this);
         this.onTempDeleteMovie = this.onTempDeleteMovie.bind(this);
         
     }
 
     componentDidMount(){
-        //React code to for it to get made i think ??
         Modal.setAppElement('body');
-        //Reques to get list of Movies
-        getMovies("name", this, backend );
+       
+        getMovies("name", this, backend);  //Reques to get list of Movies
+        
+        this.getInterval = setInterval( ()=>{ //create interval to retrieve movies 
+            console.log("trying to update")
+            getMovies("name", this, backend)}, 5000);
+    }
 
+    componentWillUnmount(){
+        clearInterval(this.getInterval); 
     }
 
     openModal() {
@@ -55,13 +70,20 @@ class ListController extends React.Component{
         this.closeModal();
     }
 
+    /**
+     * Adds a movie to the list but with a different style
+     * @param {Object} movie 
+     */
     onTempAdd(movie){
         movie.temp = true;
         let  movies = this.state.movies.slice();
         movies.push(movie)
         this.setState({movies : movies});
     }
-
+    /**
+     * Makes sure that users wants to delete movie and then create request
+     * @param {Object} movie 
+     */
     onTempDeleteMovie(movie){
         //create window.confirm
         if(! window.confirm("Confirm that you want to delete :"+ movie.name)){
@@ -76,8 +98,8 @@ class ListController extends React.Component{
         });
     }
 
-    onSuccesfullAdd(){
-        getMovies("name", this, backend );
+    onSuccesfullEdit(){
+        console.log("succesfully edited movie list");
     }
 
    
@@ -105,11 +127,12 @@ class ListController extends React.Component{
                         <MovieInput closeModal ={this.closeModal}
                         onSubmitMovie = {this.onSubmitMovie}
                         onTempAdd = {this.onTempAdd}
+                        creator = {this.state.creator}
                         />
                         
                     </Modal>
 
-                    <div>
+                    <div className = "ListMovies"> {/**add a class that specifioes overflow and height */}
                         {items}
                     </div>   
                     

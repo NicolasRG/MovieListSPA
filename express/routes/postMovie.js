@@ -2,8 +2,10 @@ const app = require("express");
 const router = app.Router();
 const mongoose = require("mongoose");
 const Movie = require('../schemas/Movie.js');
-
-router.post('/', function(req, res){
+/**
+ * Adds movie to the list
+ */
+router.post('/', async function(req, res){
     
     const movie = new Movie({name : req.body.name, url : req.body.url, creator : req.body.creator});
 
@@ -11,6 +13,7 @@ router.post('/', function(req, res){
         
         console.log(doc, "post");
         res.send(doc._id+"");
+        
 
     }).catch(function(e){
         

@@ -4,7 +4,9 @@ import '../stylesheets/App.css';
 import {CookiesProvider} from 'react-cookie';
 import Title from './Title.js';
 import ListController  from './listController.js';
-
+/**
+ * Main App 
+ */
 function App() {
   return (
     <CookiesProvider>

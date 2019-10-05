@@ -7,7 +7,7 @@ import {faTimes, faQuestionCircle, faPlus } from '@fortawesome/free-solid-svg-ic
 import App from './component/App.js';
 import * as serviceWorker from './serviceWorker';
 
-library.add(fab,faTimes, faQuestionCircle, faPlus);
+library.add(fab,faTimes, faQuestionCircle, faPlus); //FontAwesome global use
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

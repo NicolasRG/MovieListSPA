@@ -7,7 +7,9 @@ const options = {
     runValidators: true,              // validate before update
   };
 
-
+/**
+ * Updates name of movie
+ */
 router.put('/', function(req, res){
 
     Movie.findOneAndUpdate(

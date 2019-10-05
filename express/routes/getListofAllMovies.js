@@ -2,7 +2,9 @@ const app = require('express');
 const router = app.Router();
 const mongoose = require("mongoose");
 const Movie = require("../schemas/Movie.js");
-
+/**
+ * Route get list of movies
+ */
 router.get('/' , function(req, res){
    try{
         Movie.find().then(function(e){

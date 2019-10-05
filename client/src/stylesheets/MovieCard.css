@@ -1,13 +1,25 @@
 .MovieCard{
     background-color: #01612cbe; 
     position: relative;
-    border-bottom: 1px  #09d3ac solid;
+    border-bottom:#282c34 solid 1px;
+    text-align: left;
     font-size: .7em;
+    overflow: hidden;
 }
 
 .MovieCard Temp{
     background-color: rgba(0, 0, 0, 0.068);
     position: relative;    
+}
+
+.MovieCardName{
+    display: inline-block;
+    line-height: 50px;
+    color : rgb(236, 236, 236);
+}
+
+.MovieCard a{
+    color: white;
 }
 
 .MovieCardIcon {
@@ -21,6 +33,10 @@
     color: #9cb4a7b4;;
     user-select: none;
 }
+
+.MovieCardIcon button{
+    user-select: none;
+}
     
 .MovieCardIcon:hover {
     color : white;
@@ -28,35 +44,34 @@
 
 .MovieCardInfo {
     background-color: #0000002a;
+    font-size: .71em;
 }
 
 .MovieCardCreator{
-    font-size:  .50em;
-    max-width: 15vw;
+    height: 30px;
 }
 
 .MovieCardURL{
-    font-size: .50em;
     height: 30px;
 }
 
 .MovieCardDelete{
     padding: 0px;
-    font-size: 2vh;
+    max-width: 50px;
+    text-align: center;
 }
 
-.MovieCardDelete div{
-    /*background-color: rgba(0, 0, 0, 0.0);*/
-    position: absolute;
+.MovieCardDelete button{
+    border: none;
+    background-color: rgba(0, 0, 0, 0.0);
+    cursor: pointer;
+    font-size : 15px;
     color : rgb(196, 68, 68);
-    width : 25px;
-    height: 100%;
-    right : 2vw;
-    display: block;
-    overflow: hidden;
+    user-select: none;
 }
 
-.MovieCardDelete div:hover{
+
+.MovieCardDelete button:hover{
     color: white;
     cursor: pointer;
 }

@@ -1,4 +1,7 @@
-const express = require('express');
+/*
+Google Auth script to verify is user is authenticated 
+*/
+
 const got = require('got');
 const jwt = require('jsonwebtoken');
 
@@ -54,7 +57,7 @@ async function validateAssertion(assertion) {
   // Check that the assertion's audience matches ours
   const aud = await audience();
   if (payload.aud !== aud) {
-    throw new Error('Audience mismatch. '+payload.aud+' should be '+aud+''.');
+    throw new Error('Audience mismatch. '+payload.aud+' should be '+aud+'.');
   }
 
   // Return the two relevant pieces of information
