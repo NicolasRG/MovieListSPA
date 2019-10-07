@@ -2,7 +2,7 @@ const Cookies = require('cookies');
 
 const keys = ["name"];
 /**
- * Testing out how cookes work in node
+ * Testing out how cookies work in node
  * @param {*} req 
  * @param {*} res 
  * @param {*} next 
@@ -17,7 +17,7 @@ const testCookieLogger = async function(req, res, next) {
     
     if(!name){
         cookies.set('name', "Jimmy boberts",{signed : true, httpOnly : false,});
-        console.log("Youre new: " + new Date().toISOString());
+        console.log("you're new: " + new Date().toISOString());
     
     }else{
         console.log("Welcome back "+ name);

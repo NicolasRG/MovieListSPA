@@ -20,7 +20,7 @@ const cookieLogger = async function(req, res, next) {
         email = info.email;
         //console.log("email is :" + email);
 
-        if( email !== cookieEmail){ //updates to cookie if correct email isnt found
+        if( email !== cookieEmail){ //updates to cookie if correct email is not found
             cookies.set('useremail', email ,{signed : true, httpOnly : false,});
             console.log("Welcome new user " + email);
         }
@@ -30,7 +30,6 @@ const cookieLogger = async function(req, res, next) {
         next();
     };
 
-    //res.setHeader('User-Email', email); 
     next();
     
 }

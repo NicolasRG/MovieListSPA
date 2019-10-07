@@ -1,6 +1,9 @@
 .ListController{
     flex-grow: 1;
     overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Kalam', cursive , "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
 }
 
 .ListMovies{

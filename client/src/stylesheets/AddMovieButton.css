@@ -26,3 +26,14 @@
     width: 49px;
     z-index: 11;
 } 
+
+@media (min-width: 5px) and (max-width: 1000px) {
+    
+    .AddMovieButton{
+        position: absolute;
+        top : 15px;
+        left : 15px;
+    }
+
+}
+

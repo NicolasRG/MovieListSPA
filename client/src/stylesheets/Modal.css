@@ -3,18 +3,18 @@
     z-index: 20;
     min-width: 100vw;
     min-height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
     top: 0px;
     left: 0px;
     -webkit-backdrop-filter: blur(5px);
+
     backdrop-filter: blur(5px);
 }
 
 .modal-content{
     position: absolute;
-    top: 40px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px;
+    margin: 40px;
     border: 1px solid rgb(204, 204, 204);
     background: rgba(50, 68, 88, 0.9855);
     overflow: auto;
@@ -24,7 +24,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90vw;
+    width: calc(100vw - 80px);
+    height: calc(100vh - 80px);
     color: aliceblue;
 }
 

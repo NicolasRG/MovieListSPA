@@ -13,10 +13,10 @@ import getMovies from '../apiRequests/getMovies.js';
 import postMovie from '../apiRequests/postMovie.js';
 import deleteMovie from '../apiRequests/deleteMovie.js';
 //SSE Request
-//import setupSSeGet from  '../apiRequests/sses.js'; Google App Engine doesnt support Keep - alive headers :////////////////////////////
+//import setupSSeGet from  '../apiRequests/sses.js'; Google App Engine doesn't support Keep - alive headers :////////////////////////////
 
 
-const backend = "https://moielist.appspot.com/";//Prodcution server
+const backend = "https://moielist.appspot.com/";//Production server
 //const backend = "http://localhost"
 
 
@@ -46,7 +46,7 @@ class ListController extends React.Component{
     componentDidMount(){
         Modal.setAppElement('body');
        
-        getMovies("name", this, backend);  //Reques to get list of Movies
+        getMovies("name", this, backend);  //Request to get list of Movies
         
         this.getInterval = setInterval( ()=>{ //create interval to retrieve movies 
             console.log("trying to update")
@@ -85,11 +85,14 @@ class ListController extends React.Component{
      * @param {Object} movie 
      */
     onTempDeleteMovie(movie){
-        //create window.confirm
+        //Verify that user wants to delete movie
         if(! window.confirm("Confirm that you want to delete :"+ movie.name)){
             return;
         }
+
         deleteMovie(movie, this, backend);
+        
+        //update the list of movies
         movie.temp = true;
         const movies = this.state.movies.slice().filter(mov => mov.name !== movie.name);
         movies.push(movie);
@@ -99,7 +102,7 @@ class ListController extends React.Component{
     }
 
     onSuccesfullEdit(){
-        console.log("succesfully edited movie list");
+        console.log("successfully edited movie list");
     }
 
    
@@ -132,7 +135,7 @@ class ListController extends React.Component{
                         
                     </Modal>
 
-                    <div className = "ListMovies"> {/**add a class that specifioes overflow and height */}
+                    <div className = "ListMovies"> 
                         {items}
                     </div>   
                     

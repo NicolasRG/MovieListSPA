@@ -1,4 +1,7 @@
 .Title{
     font-size: 120%;
     border-bottom: #282c34 5px solid;
+    font-family: -apple-system, BlinkMacSystemFont, 'Finger Paint', cursive, "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
 }

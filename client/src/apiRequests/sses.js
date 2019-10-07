@@ -1,5 +1,5 @@
 /**
- * Settup Server Sent Event to stream in uptodate mvovie list
+ * Settup Server Sent Event to stream in updates to movie list
  * @param {React.Component} context 
  * @param {String} backend 
  */

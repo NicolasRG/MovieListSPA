@@ -78,7 +78,7 @@ class MovieInput extends React.Component{
                         </div>
                         
                         <div class="form-group">
-                                <label htmlFor={"inputCreator"}> Youre ID </label>
+                                <label htmlFor={"inputCreator"}> Your ID </label>
                                 <input type = "text" className = {"form-control"} id = "inputCreator"
                                 value = {this.props.creator}  readonly = {true}/>
                         </div>

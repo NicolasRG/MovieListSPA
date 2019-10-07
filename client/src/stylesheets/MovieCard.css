@@ -16,10 +16,20 @@
     display: inline-block;
     line-height: 50px;
     color : rgb(236, 236, 236);
+    height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .MovieCard a{
     color: white;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    width : calc(100% - 50px);
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .MovieCardIcon {
@@ -49,6 +59,9 @@
 
 .MovieCardCreator{
     height: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Dosis', sans-serif , "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
 }
 
 .MovieCardURL{

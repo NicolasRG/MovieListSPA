@@ -1,6 +1,6 @@
 
 /**
- * Ataches server sent events to response 
+ * Attaches server sent events to response 
  * @param {*} req 
  * @param {*} res 
  * @param {*} next 

@@ -19,24 +19,21 @@ const cookieLogger = require('./auth/cookieLogger.js');
 //const sseUpdate = require('./middleware/sse');             ^ :(
 
 
-//schema imports
-const Movie = require("./schemas/Movie.js");
-
 
 //global server constants
 const app = express();
 const PORT = process.env.PORT || 80;
 const authConfig = require('../cred/config.json');
 
-//settup CORS
-var whitelist = ['http://localhost:3000', 
+//setup CORS
+const whitelist = ['http://localhost:3000', 
 'http://localhost','https://localhost:3000',
 'https://localhost' ,'https://moielist.appspot.com',
 'https://acounts.google.com/'];
 
 
 
-var corsOptions = {
+const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true)
@@ -70,13 +67,7 @@ db.once('open', function() {
 
 //logging
 app.use(function(req, res, next){
-  //console.log(req.ip , req.path);
-  next();
-});
-
-//attach array of connections for use later
-
-app.use(function(req, res, next){
+  console.log(req.ip , req.path);
   next();
 });
 

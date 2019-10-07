@@ -8,7 +8,7 @@ Axios.defaults.withCredentials = true;
  */
 const postMovie = ( movie, context, backend) => {
 
-    const postOptions = {//options for get operation
+    const postOptions = {//options for post operation
         method: 'post',
         url: backend+"/postMovie",
         headers: {
@@ -26,7 +26,7 @@ const postMovie = ( movie, context, backend) => {
     Axios(postOptions).then(res =>{ 
         const data = res.data;
         if(data.errors){ throw Error}//error checks
-        //context.onSuccesfullEdit();
+            //context.onSuccesfullEdit();
 
     }).catch(e =>{
         console.error(e)  

@@ -23,7 +23,7 @@ const getMovies = (name, context, backend) => {
 
     Axios(getOptions).then(res =>{ 
         const data = res.data;
-        //do cookie stuff
+        //Assign emails
         const cookies = new Cookies();
         const email  = cookies.get("useremail");
 

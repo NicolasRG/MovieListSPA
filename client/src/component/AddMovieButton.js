@@ -3,7 +3,7 @@ import "../stylesheets/AddMovieButton.css";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 /**
- * Small button to trigger modal
+ * Small button to trigger modal to add movies
  */
 class AddMovieButton extends React.Component{
 

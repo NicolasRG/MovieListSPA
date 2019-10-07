@@ -13,8 +13,11 @@ function MovieCard(props){
     }
 
     return <div className = {"MovieCard"+style + " Container"} >
-                <div className = "row" style = {{margin: 0}}>
-                    
+                <div className = "row " style = {{margin: 0, height : "50px"}}>
+                      
+                <div className ={"MovieCardName col "}>
+                        <a href ={props.url}>  {props.name} </a></div>
+                        
                     <button className ={"MovieCardIcon col order-last"}
                         data-toggle="collapse" data-target= {"#MovieCardInfo"+props._id}
                         aria-expanded="false" aria-controls={"MovieCardInfo"+props._id} >
@@ -22,9 +25,7 @@ function MovieCard(props){
                             <FontAwesomeIcon icon = "question-circle" />
                     
                     </button>
-                    
-                    <div className ={"MovieCardName col "}>
-                        <a href ={props.url}>  {props.name} </a></div>
+                  
                 
                 </div>
                 <div className="MovieCardInfo row collapse" style = {{margin: 0}} id= {"MovieCardInfo"+props._id}> 

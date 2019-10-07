@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Finger+Paint&display=swap'); 
+@import url('https://fonts.googleapis.com/css?family=Dosis|Kalam&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    font-family: -apple-system, BlinkMacSystemFont, 'Kalam', cursive , "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
