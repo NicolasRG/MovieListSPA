@@ -4,4 +4,9 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Finger Paint', cursive, "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+    display: flex;
+}
+
+.Title p{
+    flex-grow: 2
 }

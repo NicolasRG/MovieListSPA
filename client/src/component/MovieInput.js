@@ -77,10 +77,10 @@ class MovieInput extends React.Component{
                                 value = {this.state.url} placeholder="Optional URL to IMBD/Review"/>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group" readOnly>
                                 <label htmlFor={"inputCreator"}> Your ID </label>
                                 <input type = "text" className = {"form-control"} id = "inputCreator"
-                                value = {this.props.creator}  readonly = {true}/>
+                                value = {this.props.creator}  readOnly />
                         </div>
                         
                         <br />

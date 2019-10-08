@@ -5,8 +5,8 @@ import '../stylesheets/listController.css';
 import '../stylesheets/Modal.css';
 
 import MovieCard from './MovieCard.js';
-import AddMovieButton from './AddMovieButton.js';
 import MovieInput from './MovieInput.js';
+import Title  from './Title.js';
 
 //requests
 import getMovies from '../apiRequests/getMovies.js';
@@ -118,6 +118,7 @@ class ListController extends React.Component{
         });
 
         return ( <div className = "ListController">
+                    <Title onClick =  {(e)=> this.openModal}/>
                     <Modal
                         isOpen={this.state.insertModal}
                         contentLabel="onRequestClose Example"
@@ -138,8 +139,6 @@ class ListController extends React.Component{
                     <div className = "ListMovies"> 
                         {items}
                     </div>   
-                    
-                    <AddMovieButton onClick = {(e)=> this.openModal}/>
                 </div>);
     }
 }

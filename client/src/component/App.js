@@ -2,7 +2,6 @@ import React from 'react';
 import '../stylesheets/App.css';
 
 import {CookiesProvider} from 'react-cookie';
-import Title from './Title.js';
 import ListController  from './listController.js';
 import CookieConsent from "react-cookie-consent";
 /**
@@ -13,7 +12,6 @@ function App() {
       <CookiesProvider>
       <div className="App">
         <header className="App-Container">
-          < Title />
           <ListController />
         </header>
         <CookieConsent> 
