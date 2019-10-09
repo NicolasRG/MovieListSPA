@@ -9,13 +9,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #282c34;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   outline : none;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 code {

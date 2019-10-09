@@ -11,6 +11,13 @@
     max-height: 85vh;
 }
 
+@media (min-width: 1px) and (max-width: 991.98px){
+  .ListMovies{
+    overflow-y: auto;
+    max-height: 75vh;
+}
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 3px;
