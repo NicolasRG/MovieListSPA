@@ -14,9 +14,9 @@ router.put('/', function(req, res){
 
     Movie.findOneAndUpdate(
         {
-           name : req.body.oldName+"", 
+           _id : req.body._id+"", 
         }, 
-            {$set : {name : req.body.newName+""}
+            {$set : {name : req.body.name+"", url: req.body.url+"" , creator:req.body.creator+"" }
         },
          options)
     .then(function(doc){

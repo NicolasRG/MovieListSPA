@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
  */
 function ModalHeader(props){
 
-    return ( <div class="container">
+    return ( <div className ="container">
                 <div className ="row">
                     <button onClick = {props.closeModal} className = "closeButton col order-last" >                     
                         <FontAwesomeIcon icon={"times"} />

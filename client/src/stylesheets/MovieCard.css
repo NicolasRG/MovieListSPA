@@ -64,6 +64,14 @@
     sans-serif;
 }
 
+.MovieCardCreator svg{
+    color : grey
+}
+
+.MovieCardCreator svg:hover{
+    color: white;
+}
+
 .MovieCardURL{
     height: 30px;
 }

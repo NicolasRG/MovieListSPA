@@ -12,6 +12,7 @@ import Title  from './Title.js';
 import getMovies from '../apiRequests/getMovies.js';
 import postMovie from '../apiRequests/postMovie.js';
 import deleteMovie from '../apiRequests/deleteMovie.js';
+import putsMovie from '../apiRequests/putsMovie.js';
 //SSE Request
 //import setupSSeGet from  '../apiRequests/sses.js'; Google App Engine doesn't support Keep - alive headers :////////////////////////////
 
@@ -29,7 +30,8 @@ class ListController extends React.Component{
 
         this.state = {movies: [], //list of movies in the list
                       insertModal : false, //modal controller
-                      creator : ""
+                      creator : "",
+                      edit : null,  
                     }
         
         this.getInterval = null;  //interval to update movie list          
@@ -40,6 +42,8 @@ class ListController extends React.Component{
         this.onTempAdd = this.onTempAdd.bind(this);
         this.onSuccesfullEdit = this.onSuccesfullEdit.bind(this);
         this.onTempDeleteMovie = this.onTempDeleteMovie.bind(this);
+        this.onTempEdit = this.onTempEdit.bind(this);
+        this.openEditModal = this.openEditModal.bind(this);
         
     }
 
@@ -58,18 +62,28 @@ class ListController extends React.Component{
     }
 
     openModal() {
-        this.setState({insertModal : true});
+        this.setState({insertModal : true,});
       }
+
+    openEditModal(movie){
+        this.setState({insertModal : true,
+                        edit: movie});
+    }
     
     closeModal() {
-        this.setState({ insertModal: false});
+        this.setState({ insertModal: false,
+                        edit : null});
       }
 
     onSubmitMovie(movie){
-        postMovie( movie , this, backend);
+        if(this.state.edit !== null){
+            console.log("Update existing movie");
+            putsMovie(movie, this, backend);
+        }
+        else {postMovie( movie , this, backend);}
         this.closeModal();
     }
-
+    
     /**
      * Adds a movie to the list but with a different style
      * @param {Object} movie 
@@ -79,6 +93,10 @@ class ListController extends React.Component{
         let  movies = this.state.movies.slice();
         movies.push(movie)
         this.setState({movies : movies});
+    }
+
+    onTempEdit(){
+        console.log();
     }
     /**
      * Makes sure that users wants to delete movie and then create request
@@ -105,7 +123,6 @@ class ListController extends React.Component{
         console.log("successfully edited movie list");
     }
 
-   
 
     render(){
         const items = this.state.movies.map((d , i)=>{
@@ -114,6 +131,7 @@ class ListController extends React.Component{
                     _id = {d._id}
                     creator = {d.creator}
                     onDelete = {this.onTempDeleteMovie}
+                    onOpenEditModal= {this.openEditModal}
                     key = {"MovieCard"+i} temp= {d.temp}/>
         });
 
@@ -132,6 +150,7 @@ class ListController extends React.Component{
                         onSubmitMovie = {this.onSubmitMovie}
                         onTempAdd = {this.onTempAdd}
                         creator = {this.state.creator}
+                        edit = {this.state.edit}
                         />
                         
                     </Modal>

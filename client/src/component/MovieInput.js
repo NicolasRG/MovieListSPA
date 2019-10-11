@@ -18,14 +18,26 @@ class MovieInput extends React.Component{
                 this.regExUrl = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
                 //regex expression to match against possible urls input by user
         }
+
+        componentDidMount(){
+                if(this.props.edit !== null){
+                        console.log("in edit mode", this.props.edit);
+                        this.setState({
+                                name : this.props.edit.name+"",
+                                url : this.props.edit.url+"",
+                                _id : this.props.edit._id+""
+                        });
+                }else{
+                        console.log("not in edit mode")
+                }
+        };
         
         /**
          * Click event that error checks and verifies to see information
          * @param {Event} event 
          */
         submitMovie(event){
-                console.log(this.state);
-
+        
                 if(this.state.name.trim() ==="" || this.props.creator.trim() ===""){
                         alert("Must have name and creator id");
                         return;
@@ -37,6 +49,7 @@ class MovieInput extends React.Component{
 
                 this.props.onSubmitMovie({name : this.state.name,  //submit post for movie
                         url : this.state.url,
+                        _id : this.state._id,
                         creator : this.props.creator,
                 });
 
@@ -59,7 +72,7 @@ class MovieInput extends React.Component{
                 <br />
                 <form onSubmit = {(e)=>{e.preventDefault();}}>
 
-                        <div class="form-group">
+                        <div className="form-group">
                                 <label htmlFor="inputName">Name of Movie</label>
                                 <input type="text" className="form-control" id="inputName" 
                                 minLength = {1} maxLength ={128} onChange = {this.onChangeName}
@@ -69,7 +82,7 @@ class MovieInput extends React.Component{
 
 
 
-                        <div class="form-group">
+                        <div className="form-group">
                                 <label htmlFor="inputURL"> External Link</label>
                                 <input type = "url" className = {"form-control"} id = "inputURL"
                                 maxLength = {256} onChange = {this.onChangeURL}
@@ -77,7 +90,7 @@ class MovieInput extends React.Component{
                                 value = {this.state.url} placeholder="Optional URL to IMBD/Review"/>
                         </div>
                         
-                        <div class="form-group" readOnly>
+                        <div className="form-group" readOnly>
                                 <label htmlFor={"inputCreator"}> Your ID </label>
                                 <input type = "text" className = {"form-control"} id = "inputCreator"
                                 value = {this.props.creator}  readOnly />
@@ -86,7 +99,7 @@ class MovieInput extends React.Component{
                         <br />
                         
                 
-                        <button onClick ={this.submitMovie} class="btn btn-primary"> 
+                        <button onClick ={this.submitMovie} className="btn btn-primary"> 
                                 Submit
                         </button>
                 </form>

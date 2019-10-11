@@ -31,7 +31,8 @@ function MovieCard(props){
                 <div className="MovieCardInfo row collapse" style = {{margin: 0}} id= {"MovieCardInfo"+props._id}> 
                     
                     <div className = {"MovieCardCreator col order-first"}> 
-                            {"Suggested by : "+props.creator}
+                          <FontAwesomeIcon icon = "user-edit" onClick = {(e)=>props.onOpenEditModal({name : props.name, creator : props.creator, url : props.url, _id: props._id})}/>  
+                          &nbsp;  {"Suggested by : "+props.creator}
                     </div>
                     <div className = {"MovieCardDelete col order-last"}>
 
