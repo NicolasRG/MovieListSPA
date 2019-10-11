@@ -99,7 +99,7 @@ class MovieInput extends React.Component{
                         <br />
                         
                 
-                        <button onClick ={this.submitMovie} className="btn btn-primary"> 
+                        <button onClick ={this.submitMovie} className="btn btn-dark"> 
                                 Submit
                         </button>
                 </form>

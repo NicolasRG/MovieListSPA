@@ -15,8 +15,8 @@
 .modal-content{
     position: absolute;
     margin: 40px;
-    border: 1px solid rgb(204, 204, 204);
-    background: rgba(50, 68, 88, 0.9855);
+    border: 1px solid rgb(255, 255, 255);
+    background: rgba(22, 22, 22, 0.986);
     overflow: auto;
     border-radius: 4px;
     outline: none;

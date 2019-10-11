@@ -1,5 +1,5 @@
 .MovieCard{
-    background-color: #01612cbe; 
+    background-color: #080808be; 
     position: relative;
     border-bottom:#282c34 solid 1px;
     text-align: left;
@@ -40,7 +40,7 @@
     border: none;
     background-color: rgba(0, 0, 0, 0.0);
     cursor: pointer;
-    color: #9cb4a7b4;;
+    color: #353535;
     user-select: none;
 }
 
@@ -49,11 +49,12 @@
 }
     
 .MovieCardIcon:hover {
-    color : white;
+    color :white;
 }
 
 .MovieCardInfo {
-    background-color: #0000002a;
+    background-color: #222222;
+    filter: drop-shadow(16px 16px 20px rgb(117, 117, 117));
     font-size: .71em;
 }
 
