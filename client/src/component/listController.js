@@ -98,6 +98,7 @@ class ListController extends React.Component{
     onTempEdit(){
         console.log();
     }
+    
     /**
      * Makes sure that users wants to delete movie and then create request
      * @param {Object} movie 

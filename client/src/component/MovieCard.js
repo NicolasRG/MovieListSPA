@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import '../stylesheets/MovieCard.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 /**
@@ -7,9 +7,19 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
  */
 function MovieCard(props){
     //decides if movie is a temporary one or not
+    
+    const [selected, setSelected] = useState(false);
+
+
+    // checks to see if temp class needs to be applied
     let style = "";
     if (props.temp){
         style = " Temp";
+    }
+
+    const getClassName = () =>{
+        if(selected) return 180
+        else return 0
     }
 
     return <div className = {"MovieCard"+style + " Container"} >
@@ -20,9 +30,12 @@ function MovieCard(props){
                         
                     <button className ={"MovieCardIcon col order-last"}
                         data-toggle="collapse" data-target= {"#MovieCardInfo"+props._id}
-                        aria-expanded="false" aria-controls={"MovieCardInfo"+props._id} >
+                        aria-expanded="false" aria-controls={"MovieCardInfo"+props._id} 
+                        onClick = {()=>{setSelected(!selected)}} 
+                        >
                             
-                            <FontAwesomeIcon icon = "question-circle" />
+                            <FontAwesomeIcon icon = "question-circle" 
+                            rotation ={getClassName()}/>
                     
                     </button>
                   

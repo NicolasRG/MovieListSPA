@@ -42,10 +42,15 @@
     cursor: pointer;
     color: #353535;
     user-select: none;
+
+    
+
 }
 
 .MovieCardIcon button{
     user-select: none;
+    -webkit-transition: all 2s;
+    transition: all 2s;
 }
     
 .MovieCardIcon:hover {
@@ -97,4 +102,22 @@
     color: white;
     cursor: pointer;
 }
+
+.Rotate {
+    animation-name: rotatel;
+    animation-delay: 1s;
+    -webkit-animation-name: rotatel;
+    -webkit-animation-delay: 1s;
+}
+
+@-webkit-keyframes rotatel{
+    from {transform: rotate(0deg);}
+    to{transform: rotate(180deg);}
+}
+
+@keyframes rotatel{
+    from {transform: rotate(0deg);}
+    to{transform: rotate(180deg);}
+}
+
 

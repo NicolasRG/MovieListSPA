@@ -70,7 +70,7 @@ class MovieInput extends React.Component{
                 return <div className = "MovieInput">
                 <ModalHeader closeModal = {this.props.closeModal}/>
                 <br />
-                <form onSubmit = {(e)=>{e.preventDefault();}}>
+                <form onSubmit = {(e)=>{e.preventDefault();}} style = {{paddingTop : "10px"}}>
 
                         <div className="form-group">
                                 <label htmlFor="inputName">Name of Movie</label>
